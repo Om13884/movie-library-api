@@ -1,4 +1,5 @@
 version: "3.8"
+
 services:
   db:
     image: postgres:14
@@ -9,11 +10,10 @@ services:
       POSTGRES_PASSWORD: 1234
       POSTGRES_DB: movie_library
     ports:
-      - "5433:5432"   # 👈 Use 5433 on host to avoid conflicts
+      - "5432:5432"   # Use 5432 on host to avoid conflicts
     volumes:
-      - db_data:/var/lib/postgresql/data
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql  # auto-create tables
+      - db_data:/var/lib/postgresql/data  # persist DB data
+      - ./migrations/init.sql:/docker-entrypoint-initdb.d/init.sql  # auto-create tables on first run
 
 volumes:
   db_data:
-
