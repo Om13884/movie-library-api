@@ -1,0 +1,142 @@
+{
+  "info": {
+    "name": "Movie Library API",
+    "_postman_id": "12345678-90ab-cdef-1234-567890abcdef",
+    "description": "Postman collection for testing all Movie Library API endpoints",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": [""]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create Movie - Inception",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Inception\",\n  \"description\": \"A mind-bending thriller\",\n  \"director\": \"Christopher Nolan\",\n  \"release_year\": 2010,\n  \"genre\": \"Sci-Fi\",\n  \"rating\": 9.0\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/movies",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["movies"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create Movie - Mirai",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Mirai\",\n  \"description\": \"Hindu mythological film\",\n  \"director\": \"Karthik Gattamneni.\",\n  \"release_year\": 2025,\n  \"genre\": \"Fictional\",\n  \"rating\": 8.5\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/movies",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["movies"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get All Movies",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/movies",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["movies"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Single Movie",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/movies/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["movies", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update Movie - Inception",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Inception Reloaded\",\n  \"description\": \"Updated description\",\n  \"director\": \"Christopher Nolan\",\n  \"release_year\": 2010,\n  \"genre\": \"Sci-Fi/Thriller\",\n  \"rating\": 9.5\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/movies/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["movies", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete Movie - Mirai",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/movies/2",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["movies", "2"]
+        }
+      },
+      "response": []
+    }
+  ]
+}
