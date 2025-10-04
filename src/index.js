@@ -2,7 +2,7 @@
 require('dotenv').config(); // load .env early
 const express = require('express');
 const app = express();
-const pool = require('./db'); // pool so we can gracefully close it later
+const pool = require('./db'); // postgres pool
 const moviesRouter = require('./routes/movies');
 
 // JSON body parser middleware
@@ -20,15 +20,20 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: 'Internal server error' });
 });
 
-// Start server
-const PORT = process.env.PORT || 3000;
-const server = app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
-});
+// Export app for Supertest
+module.exports = app;
 
-// Graceful shutdown: close DB pool on SIGINT
-process.on('SIGINT', async () => {
-  console.log('Shutting down...');
-  await pool.end(); // close postgres connections
-  server.close(() => process.exit(0));
-});
+// Only start server if this file is run directly
+if (require.main === module) {
+  const PORT = process.env.PORT || 3000;
+  const server = app.listen(PORT, () => {
+    console.log(`Server listening on port ${PORT}`);
+  });
+
+  // Graceful shutdown: close DB pool on SIGINT
+  process.on('SIGINT', async () => {
+    console.log('Shutting down...');
+    await pool.end(); // close postgres connections
+    server.close(() => process.exit(0));
+  });
+}
